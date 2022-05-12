@@ -5,7 +5,6 @@ from django.views.generic import DetailView, UpdateView, DeleteView
 
 
 def news_home(request):
-    # news = Articles.objects.all()
     news = Articles.objects.order_by('-id')  # Сортировка по названия в обратном порядке(-)
     return render(request, 'news/news_home.html', {'news': news})
 
