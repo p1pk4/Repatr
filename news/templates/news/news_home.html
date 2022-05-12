@@ -1,0 +1,34 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}
+    Про всё
+{% endblock %}
+
+{% block content %}
+    {% if news %}
+        {% for element in news %}
+                <div class="container-house">
+                    <div class="container-h3">
+                        <h3>{{ element.title }} <i class="container-id">id:{{ element.id }}</i></h3>
+                    </div>
+                    <div class="container-p">
+                        <p>{{ element.full_text }}</p>
+                    </div>
+                    <div class="container-buttons">
+                        <a href="{% url 'news-detail' element.id %}" class="btn btn-light"> Читать детальнее</a>
+                    {% if element.hashtag == 'Документы' %}
+                        <a href="{% url 'documents' %}" class="btn btn-info">#{{ element.hashtag }}</a>
+                    {% elif element.hashtag == 'Деньги' %}
+                        <a href="{% url 'money' %}" class="btn btn-info">#{{ element.hashtag }}</a>
+                    {% elif element.hashtag == 'Жилье' %}
+                        <a href="{% url 'house' %}" class="btn btn-info">#{{ element.hashtag }}</a>
+                    {% elif element.hashtag == 'Животные' %}
+                        <a href="{% url 'animals' %}" class="btn btn-info">#{{ element.hashtag }}</a>
+                    {% elif element.hashtag == 'Израиль' %}
+                        <a href="{% url 'israel' %}" class="btn btn-info">#{{ element.hashtag }}</a>
+                    {% endif %}
+                    </div>
+                </div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

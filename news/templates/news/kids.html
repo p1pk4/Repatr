@@ -1,0 +1,29 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}
+    Про детей
+{% endblock %}
+
+{% block content %}
+
+<div class="features">
+    <h1>Про детей</h1>
+    <p>Про детей</p>
+        {% if news %}
+            {% for element in news %}
+                {% if element.hashtag == 'Дети' %}
+                    <div class="alert alert-primary" role="alert">
+                        <h3>{{ element.title }}</h3>
+                        <p>{{ element.full_text }}</p>
+                        <i>{{ element.date }}. id:{{ element.id }}</i>
+                        <a href="{% url 'news-detail' element.id %}" class="btn btn-warning"> Читать детальнее</a>
+                        <div>
+                            <a href="{% url 'kids' %}" class="btn btn-info">#{{ element.hashtag }}</a>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    <button class="btn btn-warning">На страницу с информацией</button>
+</div>
+{% endblock %}
