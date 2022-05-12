@@ -5,7 +5,7 @@ class Articles(models.Model):
     title = models.CharField('Название', max_length=15)
     hashtag = models.CharField('Хештег', max_length=20)
     full_text = models.TextField('Текст')
-    date = models.DateField('Дата публикации')
+    # date = models.DateField('Дата публикации')
 
     class Meta:
         verbose_name = 'Новость'
