@@ -5,7 +5,7 @@ from django.forms import ModelForm, TextInput, DateTimeInput, Textarea
 class ArticlesForm(ModelForm):
     class Meta:
         model = Articles
-        fields = ['title', 'hashtag', 'full_text', 'date']
+        fields = ['title', 'hashtag', 'full_text']
 
         widgets = {
             'title': TextInput(attrs={
@@ -20,9 +20,4 @@ class ArticlesForm(ModelForm):
                 'class': 'form-control',
                 'placeholder': 'Полный текст вводить в это поле'
             }),
-            'date': DateTimeInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Дата публикации на сайте'
-            }),
         }
-#  Виджеты можно передавать через name - <input type="text" placeholder="Название статьи" class="form-control" name="title"><br>
